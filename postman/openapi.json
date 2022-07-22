@@ -1,0 +1,630 @@
+{
+openapi: "3.0.2",
+info: {
+title: "FastAPI",
+version: "0.1.0"
+},
+paths: {
+/auth/token: {
+post: {
+tags: [
+"auth"
+],
+summary: "Login For Access Token",
+operationId: "login_for_access_token_auth_token_post",
+requestBody: {
+content: {
+application/x-www-form-urlencoded: {
+schema: {
+$ref: "#/components/schemas/Body_login_for_access_token_auth_token_post"
+}
+}
+},
+required: true
+},
+responses: {
+200: {
+description: "Successful Response",
+content: {
+application/json: {
+schema: { }
+}
+}
+},
+401: {
+description: "Unauthorized",
+user: "Not authorized"
+},
+422: {
+description: "Validation Error",
+content: {
+application/json: {
+schema: {
+$ref: "#/components/schemas/HTTPValidationError"
+}
+}
+}
+}
+}
+}
+},
+/auth/: {
+get: {
+tags: [
+"auth"
+],
+summary: "Authentication Page",
+operationId: "authentication_page_auth__get",
+responses: {
+200: {
+description: "Successful Response",
+content: {
+text/html: {
+schema: {
+type: "string"
+}
+}
+}
+},
+401: {
+description: "Unauthorized",
+user: "Not authorized"
+}
+}
+},
+post: {
+tags: [
+"auth"
+],
+summary: "Login",
+operationId: "login_auth__post",
+responses: {
+200: {
+description: "Successful Response",
+content: {
+text/html: {
+schema: {
+type: "string"
+}
+}
+}
+},
+401: {
+description: "Unauthorized",
+user: "Not authorized"
+}
+}
+}
+},
+/auth/logout: {
+get: {
+tags: [
+"auth"
+],
+summary: "Logout",
+operationId: "logout_auth_logout_get",
+responses: {
+200: {
+description: "Successful Response",
+content: {
+application/json: {
+schema: { }
+}
+}
+},
+401: {
+description: "Unauthorized",
+user: "Not authorized"
+}
+}
+}
+},
+/auth/register: {
+get: {
+tags: [
+"auth"
+],
+summary: "Register",
+operationId: "register_auth_register_get",
+responses: {
+200: {
+description: "Successful Response",
+content: {
+text/html: {
+schema: {
+type: "string"
+}
+}
+}
+},
+401: {
+description: "Unauthorized",
+user: "Not authorized"
+}
+}
+},
+post: {
+tags: [
+"auth"
+],
+summary: "Register User",
+operationId: "register_user_auth_register_post",
+requestBody: {
+content: {
+application/x-www-form-urlencoded: {
+schema: {
+$ref: "#/components/schemas/Body_register_user_auth_register_post"
+}
+}
+},
+required: true
+},
+responses: {
+200: {
+description: "Successful Response",
+content: {
+text/html: {
+schema: {
+type: "string"
+}
+}
+}
+},
+401: {
+description: "Unauthorized",
+user: "Not authorized"
+},
+422: {
+description: "Validation Error",
+content: {
+application/json: {
+schema: {
+$ref: "#/components/schemas/HTTPValidationError"
+}
+}
+}
+}
+}
+}
+},
+/todos/: {
+get: {
+tags: [
+"todos"
+],
+summary: "Read All By User",
+operationId: "read_all_by_user_todos__get",
+responses: {
+200: {
+description: "Successful Response",
+content: {
+text/html: {
+schema: {
+type: "string"
+}
+}
+}
+},
+404: {
+description: "Not found"
+}
+}
+}
+},
+/todos/add-todo: {
+get: {
+tags: [
+"todos"
+],
+summary: "Add New Todo",
+operationId: "add_new_todo_todos_add_todo_get",
+responses: {
+200: {
+description: "Successful Response",
+content: {
+text/html: {
+schema: {
+type: "string"
+}
+}
+}
+},
+404: {
+description: "Not found"
+}
+}
+},
+post: {
+tags: [
+"todos"
+],
+summary: "Create Todo",
+operationId: "create_todo_todos_add_todo_post",
+requestBody: {
+content: {
+application/x-www-form-urlencoded: {
+schema: {
+$ref: "#/components/schemas/Body_create_todo_todos_add_todo_post"
+}
+}
+},
+required: true
+},
+responses: {
+200: {
+description: "Successful Response",
+content: {
+text/html: {
+schema: {
+type: "string"
+}
+}
+}
+},
+404: {
+description: "Not found"
+},
+422: {
+description: "Validation Error",
+content: {
+application/json: {
+schema: {
+$ref: "#/components/schemas/HTTPValidationError"
+}
+}
+}
+}
+}
+}
+},
+/todos/edit-todo/{todo_id}: {
+get: {
+tags: [
+"todos"
+],
+summary: "Edit Todo",
+operationId: "edit_todo_todos_edit_todo__todo_id__get",
+parameters: [
+{
+required: true,
+schema: {
+title: "Todo Id",
+type: "integer"
+},
+name: "todo_id",
+in: "path"
+}
+],
+responses: {
+200: {
+description: "Successful Response",
+content: {
+text/html: {
+schema: {
+type: "string"
+}
+}
+}
+},
+404: {
+description: "Not found"
+},
+422: {
+description: "Validation Error",
+content: {
+application/json: {
+schema: {
+$ref: "#/components/schemas/HTTPValidationError"
+}
+}
+}
+}
+}
+},
+post: {
+tags: [
+"todos"
+],
+summary: "Edit Todo Commit",
+operationId: "edit_todo_commit_todos_edit_todo__todo_id__post",
+parameters: [
+{
+required: true,
+schema: {
+title: "Todo Id",
+type: "integer"
+},
+name: "todo_id",
+in: "path"
+}
+],
+requestBody: {
+content: {
+application/x-www-form-urlencoded: {
+schema: {
+$ref: "#/components/schemas/Body_edit_todo_commit_todos_edit_todo__todo_id__post"
+}
+}
+},
+required: true
+},
+responses: {
+200: {
+description: "Successful Response",
+content: {
+text/html: {
+schema: {
+type: "string"
+}
+}
+}
+},
+404: {
+description: "Not found"
+},
+422: {
+description: "Validation Error",
+content: {
+application/json: {
+schema: {
+$ref: "#/components/schemas/HTTPValidationError"
+}
+}
+}
+}
+}
+}
+},
+/todos/delete/{todo_id}: {
+get: {
+tags: [
+"todos"
+],
+summary: "Delete Todo",
+operationId: "delete_todo_todos_delete__todo_id__get",
+parameters: [
+{
+required: true,
+schema: {
+title: "Todo Id",
+type: "integer"
+},
+name: "todo_id",
+in: "path"
+}
+],
+responses: {
+200: {
+description: "Successful Response",
+content: {
+application/json: {
+schema: { }
+}
+}
+},
+404: {
+description: "Not found"
+},
+422: {
+description: "Validation Error",
+content: {
+application/json: {
+schema: {
+$ref: "#/components/schemas/HTTPValidationError"
+}
+}
+}
+}
+}
+}
+},
+/todos/complete/{todo_id}: {
+get: {
+tags: [
+"todos"
+],
+summary: "Complete Todo",
+operationId: "complete_todo_todos_complete__todo_id__get",
+parameters: [
+{
+required: true,
+schema: {
+title: "Todo Id",
+type: "integer"
+},
+name: "todo_id",
+in: "path"
+}
+],
+responses: {
+200: {
+description: "Successful Response",
+content: {
+text/html: {
+schema: {
+type: "string"
+}
+}
+}
+},
+404: {
+description: "Not found"
+},
+422: {
+description: "Validation Error",
+content: {
+application/json: {
+schema: {
+$ref: "#/components/schemas/HTTPValidationError"
+}
+}
+}
+}
+}
+}
+}
+},
+components: {
+schemas: {
+Body_create_todo_todos_add_todo_post: {
+title: "Body_create_todo_todos_add_todo_post",
+required: [
+"title",
+"description",
+"priority"
+],
+type: "object",
+properties: {
+title: {
+title: "Title",
+type: "string"
+},
+description: {
+title: "Description",
+type: "string"
+},
+priority: {
+title: "Priority",
+type: "integer"
+}
+}
+},
+Body_edit_todo_commit_todos_edit_todo__todo_id__post: {
+title: "Body_edit_todo_commit_todos_edit_todo__todo_id__post",
+required: [
+"title",
+"description",
+"priority"
+],
+type: "object",
+properties: {
+title: {
+title: "Title",
+type: "string"
+},
+description: {
+title: "Description",
+type: "string"
+},
+priority: {
+title: "Priority",
+type: "integer"
+}
+}
+},
+Body_login_for_access_token_auth_token_post: {
+title: "Body_login_for_access_token_auth_token_post",
+required: [
+"username",
+"password"
+],
+type: "object",
+properties: {
+grant_type: {
+title: "Grant Type",
+pattern: "password",
+type: "string"
+},
+username: {
+title: "Username",
+type: "string"
+},
+password: {
+title: "Password",
+type: "string"
+},
+scope: {
+title: "Scope",
+type: "string",
+default: ""
+},
+client_id: {
+title: "Client Id",
+type: "string"
+},
+client_secret: {
+title: "Client Secret",
+type: "string"
+}
+}
+},
+Body_register_user_auth_register_post: {
+title: "Body_register_user_auth_register_post",
+required: [
+"email",
+"username",
+"firstname",
+"lastname",
+"password",
+"password2"
+],
+type: "object",
+properties: {
+email: {
+title: "Email",
+type: "string"
+},
+username: {
+title: "Username",
+type: "string"
+},
+firstname: {
+title: "Firstname",
+type: "string"
+},
+lastname: {
+title: "Lastname",
+type: "string"
+},
+password: {
+title: "Password",
+type: "string"
+},
+password2: {
+title: "Password2",
+type: "string"
+}
+}
+},
+HTTPValidationError: {
+title: "HTTPValidationError",
+type: "object",
+properties: {
+detail: {
+title: "Detail",
+type: "array",
+items: {
+$ref: "#/components/schemas/ValidationError"
+}
+}
+}
+},
+ValidationError: {
+title: "ValidationError",
+required: [
+"loc",
+"msg",
+"type"
+],
+type: "object",
+properties: {
+loc: {
+title: "Location",
+type: "array",
+items: {
+type: "string"
+}
+},
+msg: {
+title: "Message",
+type: "string"
+},
+type: {
+title: "Error Type",
+type: "string"
+}
+}
+}
+}
+}
+}
